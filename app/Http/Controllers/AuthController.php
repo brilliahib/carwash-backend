@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\ResponseResource;
 use App\Services\Auth\AuthService;
@@ -23,7 +24,19 @@ class AuthController extends Controller
 
             return new ResponseResource($user, 'User registered successfully', 201);
         } catch (\Throwable $e) {
-            return new ResponseResource(null, 'Registration failed: ' . $e->getMessage(), 500);
+            return new ResponseResource(null, $e->getMessage(), 500);
+        }
+    }
+
+    public function login(LoginRequest $request)
+    {
+        try {
+            $credentials = $request->validated();
+            $user = $this->authService->login($credentials);
+
+            return new ResponseResource($user, 'Login successful', 200);
+        } catch (\Throwable $e) {
+            return new ResponseResource(null, $e->getMessage(), 401);
         }
     }
 }
