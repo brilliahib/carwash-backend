@@ -1,61 +1,134 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
+  
+# Carwash Backend
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Backend application for Carwash System.  
+This system is designed to manage online vehicle wash bookings for customers and streamline order management for admins/operators.
 
-## About Laravel
+</div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Prerequisites
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. PHP (^8.2)
+2. Composer (package manager)
+3. MySQL/MariaDB (DBMS)
+4. Laravel ^12.x (Framework)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation
 
-## Learning Laravel
+1. Clone this repository
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    ```sh
+    git clone https://github.com/brilliahib/carwash-backend
+    ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. Install dependencies
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    ```sh
+    composer install
+    ```
 
-## Laravel Sponsors
+3. Run app
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    ```sh
+    php artisan serve
+    ```
 
-### Premium Partners
+## Workflow
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. Git
 
-## Contributing
+    We will use git for version control system, please use branching workflow if you want to make the new feature or
+    others works.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. Branch
 
-## Code of Conduct
+    We will use 2 important branch for the workflow development
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    - main (the main or production branch)
+    - development (all the development process)
 
-## Security Vulnerabilities
+    There is not limited to only use 2 branch above, again if we want make a new feature please make the **new branch**
+    from the source **development branch**.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. Commit
 
-## License
+    This project is already setup the checking commit message, so the commit message must follow the best practice commit
+    message convention.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    The convention is follow this rules https://www.conventionalcommits.org/
+
+4. Github
+
+    All the source code will be saved on the remote repository (in this case Github), so after make changes in local,
+    make sure to push the changes code to the Github.
+
+5. Pull Request
+
+    The changes of merging from the **2 important branch** (main, and development) must be from the Pull Request flow,
+    don't be directly push or merge the code when it's in the **2 important branch**.
+
+## Folder Structure
+
+```
+├── app
+│   ├── Http
+│   │   ├── Controllers
+│   │   ├── Requests
+│   │   └── Resources
+│   ├── Models
+│   ├── Providers
+│   └── Services
+├── artisan
+├── bootstrap
+├── config
+├── database
+│   ├── factories
+│   ├── migrations
+│   └── seeders
+├── public
+├── resources
+├── routes
+│   ├── api.php
+│   ├── console.php
+│   └── web.php
+├── storage
+└── tests
+```
+
+-   app : application folder for laravel, contain all of main code for the system
+    -   Http : folder for handle incoming Http request
+        -   Controller : folder for controller
+        -   Requests : folder for requests validation
+        -   Resources : folder for resource of response data
+    -   Models : contains Eloquent ORM for interact with database
+    -   Providers: contains service providers for configuring application services.
+    -   Service: contains all of business logic for application
+-   artisan : laravel cli
+-   bootstrap : directory for bootstrapping the framework, including caching configurations and application startup scripts.
+-   config : contains all of application configuration file
+-   database : holds all database-related files
+    -   factories : contains factory definitions for generating test data.
+    -   migrations : contains database migration scripts for modifying database schema.
+    -   seeders : contains seed classes for populating the database with sample data.
+-   public : contains publicly accessible files, including the index.php entry point, JavaScript, CSS, images, and other assets.
+-   resources : contains all resources including views, language files, and frontend assets
+-   routes : holds all route-related files
+    -   api.php : route for api endpoint, prefixed with `/api`
+    -   console.php : defines console commands accessible via Artisan
+    -   web.php : contains web routes
+-   storage : stores logs, compiled views, cached files, and user uploads.
+-   tests : contains unit and feature test files for automated testing.
+
+## Commit Convention
+
+This project uses **commitlint** to enforce commit message rules.  
+We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+
+### Examples
+
+-   `feat: add booking service logic`
+-   `fix(order): correct total price calculation`
+-   `docs: update installation guide in README`
+-   `refactor(controller): simplify order creation flow`
+-   `test: add unit test for carwash service`
